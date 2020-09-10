@@ -1,0 +1,25 @@
+<div class="conteudo">
+    <div class="top-navigation-bar">
+        <div>
+            <a class="btn btn-voltar" [routerLink]="['../../list']"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </div>
+    <div class="anime-image">
+        <div class="mockup-image"><img alt="{{ anime?.nome }}" src="{{ anime?.urlImagem }}"></div>
+    </div>
+    <div class="descriptions">
+        <div class="title">{{ anime?.nome }}</div>
+    </div>
+    <div>
+        <ul id="listaTemporadas">
+            <li *ngFor="let season of [].constructor(anime?.quantidadeTemporadas),let i = index" class="list-item">
+                <div class="titleList" (click)="mostrarMusicas($event)">{{i + 1}}ª Temporada</div>
+                <div class="dropdownList">
+                    <ul class="music-list close">
+                        <li *ngFor="let musica of musicas[i]" class="subtitleList">{{musica.nomeMusica}} - {{musica.tipoMusica}}</li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

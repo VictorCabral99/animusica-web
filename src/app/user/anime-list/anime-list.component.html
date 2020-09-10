@@ -1,0 +1,16 @@
+<div>
+    <span class="fake-input" #fakeInput (click)="mostrarCampo($event)">
+        <i class="fa fa-search"></i> Buscar
+    </span>
+    <input id="searchInput" type="text" class="form-control text-center" #searchInput (focusout)="esconderCampo($event)" (keyup)="filtrarAnime($event)" style="display: none;"/>
+</div>
+<div>
+    <ul id="listaAnimes" #listAnimes >
+        <li *ngFor="let anime of animes" [ngClass]="{'hide': anime.visivel}">
+            <a [routerLink]="['../detail/', anime.id]">
+                <div class="img"><img src="{{ anime.urlImagem }}"></div>
+                <div class="title">{{ anime.nome }}</div>
+            </a>
+        </li>
+    </ul>
+</div>

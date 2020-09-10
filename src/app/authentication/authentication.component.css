@@ -1,0 +1,85 @@
+h3 {
+    font-size: 25px;
+}
+/*LOGO*/
+.logo {
+    width: 60%;
+    margin-left: 20%;
+    height: auto;
+}
+/*LOGO*/
+
+/*BUTTONS*/
+.btn {
+    position: relative;
+    border: none;
+    margin: 5px 0px;
+}
+.btn i {
+    font-size: 30px;
+    position: absolute;
+    left: 15px;
+    top: 12px;
+}
+.btn-google {
+    background-color: #DD4B39;
+    width: 100%;
+    padding: 18px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+}
+.btn-facebook {
+    background-color: #3B5998;
+    width: 100%;
+    padding: 18px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+}
+.btn-entrar {
+    width: 100%;
+    background-color: green;
+    color: white;
+    padding: 12px 6px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 0 0 5px 0px;
+}
+/*BUTTONS*/
+
+/*SEPARACAO*/
+.spacer{
+    display: flex;
+    padding: 18px 12px;
+    font-size: 16px;
+}
+.spacer hr{
+    width: 40%;
+}
+/*SEPARACAO*/
+
+/*FORMULARIO*/
+.required {
+    color: red;
+}
+.form-control {
+    padding: 12px 6px;
+    width: calc(100% - 16px);
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.esqueci-senha, .lembrar-me {
+    width: calc(50% - 8px);
+    position: relative;
+    display: inline-block;
+    padding: 8px 0px 16px 0px;
+}
+.lembrar-me {
+    text-align: right;
+}
+.esqueci-senha a, .cadastre-se a {
+    color: white;
+}
+/*FORMULARIO*/

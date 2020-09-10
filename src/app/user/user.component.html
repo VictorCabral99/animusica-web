@@ -1,0 +1,20 @@
+<router-outlet></router-outlet>
+<audio src="https://firebasestorage.googleapis.com/v0/b/animusicas-14da4.appspot.com/o/musicas%2FEnXi8wfyFwNd9FbcZzHc%2FlAc7ta2ELigLHOXKIAgc.mp3?alt=media&token=b4c38ec2-0351-47dd-ba09-bda4594b967e"></audio>
+<div class="bottom-navigation-bar">
+    <div id="miniPlayer">
+        <div class="song-data">
+            <div class="song-name">Gurenge</div>
+            <div class="song-anime">Kimetsu no Yaiba</div>
+        </div>
+        <div class="music-controller">
+            <button class="btn btn-previous"><i class="fas fa-step-backward"></i></button>
+            <button class="btn btn-play-pause"><i class="fas fa-pause"></i><!--<i class="fas fa-play"></i>--></button>
+            <button class="btn btn-next"><i class="fas fa-step-forward"></i></button>
+        </div>
+    </div>
+    <div class="navigation-bar">
+        <a class="btn btn-home" [routerLink]="['list']"><i class="fas fa-home"></i></a>
+        <a class="btn btn-favorite"><i class="fas fa-heart"></i></a>
+        <a class="btn btn-user"><i class="fas fa-user-circle"></i></a>
+    </div>
+</div>

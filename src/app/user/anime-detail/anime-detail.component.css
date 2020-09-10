@@ -1,0 +1,100 @@
+.conteudo {
+    height: calc(96vh - 85px);
+    overflow-y: scroll;
+}
+/* BUTTONS */
+.top-navigation-bar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.btn {
+    font-size: 25px;
+    background-color: #3c3c3c;
+    border: none;
+    color: white;
+    padding: 2vh;
+    display: inline-block;
+}
+.btn:focus {
+    outline: none;
+}
+/* BUTTONS */
+/* IMAGE */
+.anime-image {
+    display: flex;
+    justify-content: center;
+}
+.mockup-image {
+    width: 40vh;
+    height: 40vh;
+    background-color: lightgray;
+    border-radius: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mockup-image img {
+    width: 40vh;
+    border-radius: 100%;
+}
+/* IMAGE */
+/* TITLE */
+.descriptions {
+    padding: 18px 10px;
+    width: calc(100% - 28px);
+}
+    .descriptions .title{
+        text-align: center;
+        font-size: 36px;
+    }
+/* TITLE */
+/* LIST */
+#listaTemporadas {
+    list-style: none;
+    padding: 0 15px;
+}
+.titleList {
+    padding: 12px 8px;
+    border: 0.5px solid #8d8d8d;
+    background-color: #616161;
+    box-shadow: 3px 3px 10px #1d1d1d;
+    margin: 3px 0px;
+    border-radius: 7px;
+    z-index: 3;
+    font-size: 18px;
+    position: relative;
+}
+.dropdownList{
+    background-color: #505050;
+    width: calc(100% - 10px);
+    margin: -2px 5px 10px 5px;
+    z-index: 2;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: 1px 1px 10px black;
+}
+.music-list {
+    display: block;
+    list-style: none;
+    opacity: 1;
+    transition: all 0.25s linear;
+    overflow: hidden;
+    max-height: 500px;
+    padding: 5px 15px;
+}
+.music-list.close{
+    opacity: .25;
+    max-height: 0;
+    transition: all 0.25s linear;
+    padding: 0px 15px;
+}
+.subtitleList {
+    padding: 10px 6px;
+}
+.subtitleList:not(:last-child){
+    border-bottom: 1px solid #777777;
+}
+/* LIST */

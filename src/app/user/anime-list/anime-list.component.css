@@ -1,0 +1,73 @@
+.hide {
+    display: none !important;
+}
+/* INPUT BUSCAR */
+.form-control {
+    padding: 12px 6px;
+    width: calc(100% - 16px);
+    border-radius: 8px;
+    margin-bottom: 5px;
+    outline: none;
+}
+#searchInput {
+    margin-top: 25px;
+    background-color: #616161;
+    color: white;
+    border: 0.5px solid black;
+}
+.fake-input {
+    padding: 12px 6px;
+    width: calc(100% - 16px);
+    border-radius: 8px;
+    margin-top: 25px;
+    margin-bottom: 5px;
+    background-color: #616161;
+    position: relative;
+    display: block;
+    text-align: center;
+    border: 0.5px solid black;
+    cursor: text;
+    height: 15px;
+}
+/* INPUT BUSCAR */
+/* LISTA ANIMES */
+#listaAnimes {
+    list-style: none;
+    padding: 0;
+    height: 75vh;
+    overflow: auto;
+}
+#listaAnimes li {
+    display: inline-block;
+    width: calc(50% - 28px);/* 12(para cada padding)x2 + 4(metado do body)*/
+    padding: 6px 12px;
+    height: 250px;
+    overflow: hidden;
+}
+#listaAnimes li a {
+    text-decoration: none;
+    color: white;
+}
+#listaAnimes li a:focus {
+    outline: none;
+}
+#listaAnimes li a .img {
+    height: 200px;
+}
+#listaAnimes li a .img img {
+    width: 100%; 
+    height: 100%;
+}
+#listaAnimes li .title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+    height: 45px;
+    width: 100%;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+/* LISTA ANIMES */
