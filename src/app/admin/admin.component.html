@@ -1,1 +1,11 @@
-<p>admin works!</p>
+<div>
+    <div>
+        <ul id="listaAcoesAdmin">
+            <li><button class="btn btn-block btn-primary" [routerLink]='["anime/insert"]'>Adicionar Anime</button></li>
+            <li><button class="btn btn-block btn-secondary" [routerLink]='["anime/edit"]'>Editar Anime</button></li>
+            <li><button class="btn btn-block btn-primary" [routerLink]='["music/insert"]'>Adicionar Musicas</button></li>
+            <li><button class="btn btn-block btn-secondary" [routerLink]='["music/edit"]'>Editar Musicas</button></li>
+        </ul>
+        <router-outlet></router-outlet>
+    </div>
+</div>

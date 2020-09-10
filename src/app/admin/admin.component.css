@@ -1,0 +1,30 @@
+#listaAcoesAdmin {
+    list-style: none;
+    padding: 0px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px 6px;
+    margin: 8px 0px;
+    border: none;
+    border-radius: 5px;
+}
+.btn:focus{
+    outline: none;
+}
+.btn-block {
+    display: block;
+}
+.btn-primary {
+    background-color: rgb(44, 91, 194);
+    color: white;
+}
+.btn-secondary {
+    background-color: rgb(9, 121, 27);
+    color: white;
+}
+.btn-terciary {
+    background-color: lightblue;
+
+}
