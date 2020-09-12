@@ -13,8 +13,13 @@ import { Musica } from '../../shared/models/musica.model';
 export class AnimeDetailService {
     constructor(private http: HttpClient, private globals: Globals) {}
 
-    getAnimeDetailsById(idAnime: string): Observable<any>{
+    getAnimeDetailsById(idAnime: string): Observable<Anime>{
         const headers = new HttpHeaders().set("Content-Type", "application/json");
-        return this.http.get(this.globals.animeAPI+"/animes/"+idAnime, {headers}).pipe(map((response: any)=> response));
+        return this.http.get(this.globals.animeAPI+"/animes/"+idAnime, {headers}).pipe(map((response: Anime)=> response));
+    }
+
+    getMusicsByAnimeSeason(idAnime: string, season: number): Observable<Musica[]>{
+        const headers = new HttpHeaders().set("Content-Type", "application/json");
+        return this.http.get(this.globals.animeAPI+"/animes/"+idAnime+"/season/"+season+"/musics", {headers}).pipe(map((response: Musica[])=> response));
     }
 }

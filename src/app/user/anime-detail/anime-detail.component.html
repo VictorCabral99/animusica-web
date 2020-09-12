@@ -13,10 +13,9 @@
     <div>
         <ul id="listaTemporadas">
             <li *ngFor="let season of [].constructor(anime?.quantidadeTemporadas),let i = index" class="list-item">
-                <div class="titleList" (click)="mostrarMusicas($event)">{{i + 1}}ª Temporada</div>
+                <div class="titleList" (click)="mostrarMusicas($event, i + 1)">{{i + 1}}ª Temporada</div>
                 <div class="dropdownList">
                     <ul class="music-list close">
-                        <li *ngFor="let musica of musicas[i]" class="subtitleList">{{musica.nomeMusica}} - {{musica.tipoMusica}}</li>
                     </ul>
                 </div>
             </li>

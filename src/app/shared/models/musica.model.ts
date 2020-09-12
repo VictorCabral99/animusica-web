@@ -4,4 +4,5 @@ export class Musica {
     temporada: number
     tipoMusica: string
     urlMusica: string
+    idAnime: string
 }

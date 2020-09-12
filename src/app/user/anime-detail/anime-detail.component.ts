@@ -15,22 +15,37 @@ export class AnimeDetailComponent implements OnInit {
 
   idAnime: string;
   anime: Anime;
-  musicas: Musica[];
+  musicas: Musica[] = [];
   ngOnInit() {
     this.idAnime = this.route.snapshot.params['id'];
     if(this.idAnime){
       this.animeDetailService.getAnimeDetailsById(this.idAnime).subscribe(res => {
-        this.anime = res.anime;
-        this.musicas = res.musicas;
+        this.anime = res;
       });
     } else {
       this.router.navigate(['user/list']);
     }
   }
 
-  mostrarMusicas(ev){
+  mostrarMusicas(ev, temporada){
     let dropdownMenu = ev.target.nextElementSibling.querySelector('.music-list'); 
+    if(dropdownMenu.children.length == 0){
+      this.animeDetailService.getMusicsByAnimeSeason(this.anime.id, temporada).subscribe(res => {
+        this.musicas = res;
+        for(let i = 0; i < this.musicas.length;  i++){
+          this.criarListItem(dropdownMenu, this.musicas[i].nomeMusica + " - " + this.musicas[i].tipoMusica)
+        }
+      })    
+    }
     let estaFechado = dropdownMenu.classList.contains('close');
-    estaFechado ? dropdownMenu.classList.remove('close') : dropdownMenu.classList.add('close')
+        estaFechado ? dropdownMenu.classList.remove('close') : dropdownMenu.classList.add('close')
+  }
+ 
+  criarListItem(dropdown, texto){
+    let tempLi = document.createElement("li");
+    tempLi.className = "subtitleList";
+    tempLi.setAttribute(dropdown.attributes[0].name,"");
+    tempLi.innerText = texto;
+    dropdown.appendChild(tempLi);
   }
 }
