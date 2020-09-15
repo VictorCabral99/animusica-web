@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'animusica';
 
   constructor(private globals: Globals){
-    this.globals.animeAPI = "https://localhost:8080"
+    this.globals.animeAPI = "http://localhost:8080"
   }
 }

@@ -9,7 +9,12 @@ export class AdminComponent implements OnInit {
 
   constructor() { }
 
+  menuVisivel: boolean = false;
+
   ngOnInit(): void {
   }
 
+  toggleMenu(): void {
+    this.menuVisivel = !this.menuVisivel;
+  }
 }

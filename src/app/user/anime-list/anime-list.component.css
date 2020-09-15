@@ -10,17 +10,18 @@
     outline: none;
 }
 #searchInput {
-    margin-top: 25px;
+    margin: 25px 8px 5px 8px;
+    width: calc(100% - 32px);
     background-color: #616161;
     color: white;
     border: 0.5px solid black;
+    box-sizing: initial;
 }
 .fake-input {
     padding: 12px 6px;
-    width: calc(100% - 16px);
+    width: calc(100% - 32px);
     border-radius: 8px;
-    margin-top: 25px;
-    margin-bottom: 5px;
+    margin: 25px 8px 5px 8px;
     background-color: #616161;
     position: relative;
     display: block;
@@ -28,6 +29,7 @@
     border: 0.5px solid black;
     cursor: text;
     height: 15px;
+    box-sizing: initial;
 }
 /* INPUT BUSCAR */
 /* LISTA ANIMES */
@@ -39,7 +41,7 @@
 }
 #listaAnimes li {
     display: inline-block;
-    width: calc(50% - 28px);/* 12(para cada padding)x2 + 4(metado do body)*/
+    width: 50%;
     padding: 6px 12px;
     height: 250px;
     overflow: hidden;

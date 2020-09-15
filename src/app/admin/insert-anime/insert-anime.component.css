@@ -1,0 +1,21 @@
+form {
+    text-align: center;
+}
+
+.form-group {
+    display: block;
+    padding: 12px 8px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 2px;
+}
+
+.form-group input[type="text"],.form-group input[type="number"] {
+    display: block;
+    width: 100%;
+    padding: 12px 8px;
+    border-radius: 5px;
+}

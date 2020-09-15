@@ -1,11 +1,16 @@
-<div>
-    <div>
-        <ul id="listaAcoesAdmin">
-            <li><button class="btn btn-block btn-primary" [routerLink]='["anime/insert"]'>Adicionar Anime</button></li>
-            <li><button class="btn btn-block btn-secondary" [routerLink]='["anime/edit"]'>Editar Anime</button></li>
-            <li><button class="btn btn-block btn-primary" [routerLink]='["music/insert"]'>Adicionar Musicas</button></li>
-            <li><button class="btn btn-block btn-secondary" [routerLink]='["music/edit"]'>Editar Musicas</button></li>
-        </ul>
+<div class="main">
+    <div class="top-bar">
+        <button class="tag-menu" (click)="toggleMenu()"><i class="fas fa-bars"></i></button>
+        <div class="title">Home</div>
+    </div>
+    <nav [ngClass]="{'hidden': !menuVisivel}">
+        <a (click)="toggleMenu()" [routerLink]='["anime/insert"]'>Inserir Anime</a>
+        <a (click)="toggleMenu()" [routerLink]='["anime/edit"]'>Editar Anime</a>
+        <a (click)="toggleMenu()" [routerLink]='["music/insert"]'>Inserir Musica</a>
+        <a (click)="toggleMenu()" [routerLink]='["music/edit"]'>Editar Musica</a>
+    </nav>
+    <div class="bg-black" *ngIf="menuVisivel"></div>
+    <div class="child">
         <router-outlet></router-outlet>
     </div>
 </div>
