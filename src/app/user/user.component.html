@@ -1,15 +1,15 @@
 <router-outlet></router-outlet>
-<audio></audio>
+<audio #player></audio>
 <div class="bottom-navigation-bar">
     <div id="miniPlayer">
         <div class="song-data">
-            <div class="song-name">Gurenge</div>
-            <div class="song-anime">Kimetsu no Yaiba</div>
+            <div class="song-name">{{ playlistArray[indicePlaylist]?.nomeMusica }} </div>
+            <div class="song-anime">{{ playlistArray[indicePlaylist]?.nomeAnime }}</div>
         </div>
         <div class="music-controller">
-            <button class="btn btn-previous"><i class="fas fa-step-backward"></i></button>
-            <button class="btn btn-play-pause"><i class="fas fa-pause"></i><!--<i class="fas fa-play"></i>--></button>
-            <button class="btn btn-next"><i class="fas fa-step-forward"></i></button>
+            <button class="btn btn-previous" (click)="musicaAnterior()" ><i class="fas fa-step-backward"></i></button>
+            <button class="btn btn-play-pause" (click)="playPause()" ><i class="fas" [ngClass]="{'fa-play': !this.tocando, 'fa-pause': this.tocando}"></i></button>
+            <button class="btn btn-next" (click)="proximaMusica()" ><i class="fas fa-step-forward"></i></button>
         </div>
     </div>
     <div class="navigation-bar">

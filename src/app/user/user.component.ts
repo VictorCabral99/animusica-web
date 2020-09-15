@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, DebugEventListener } from '@angular/core';
+import { Musica } from '../shared/models/musica.model';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-user',
@@ -8,8 +10,55 @@ import { Component, OnInit, ViewChild, ElementRef, DebugEventListener } from '@a
 
 export class UserComponent implements OnInit {
   
-  constructor() { }
+  @ViewChild('player') player:ElementRef;
+  tocando: boolean;
+  playlistArray: Musica[] = [];
+  indicePlaylist: number;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    this.tocando = false;
+    this.indicePlaylist = 0;
+    this.userService.getMusicsByPlaylist('1k0JrH1nKyVfzPw7E8hS').subscribe(res => {
+      this.playlistArray = res
+    });
+  }
+
+  playPause(){
+    if(this.tocando){
+      this.tocando = false;
+      this.pausarMusica();
+    } else {
+      this.tocando = true;
+      this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
+    }  
+  }
+
+  iniciarMusica(url?){
+    if(this.player.nativeElement.src != url){
+      this.player.nativeElement.src = url
+    } 
+    this.player.nativeElement.play();
+  }
+
+  pausarMusica(){
+    this.player.nativeElement.pause();
+  }
+
+  proximaMusica(){
+    this.indicePlaylist++;
+    if(this.indicePlaylist >= this.playlistArray.length){
+      this.indicePlaylist = 0;
+    }
+    this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
+  }
+
+  musicaAnterior(){
+    this.indicePlaylist--;
+    if(this.indicePlaylist < 0){
+      this.indicePlaylist = this.playlistArray.length - 1;
+    }
+    this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
   }
 }

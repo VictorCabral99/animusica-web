@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 
 import { AnimeListService } from './user/anime-list/anime-list.service';
 import { AnimeDetailService } from './user/anime-detail/anime-detail.service';
+import { UserService } from './user/user.service'
 import { InsertAnimeComponent } from './admin/insert-anime/insert-anime.component';
 import { InsertMusicComponent } from './admin/insert-music/insert-music.component';
 import { EditMusicComponent } from './admin/edit-music/edit-music.component';
@@ -38,7 +39,8 @@ import { EditAnimeComponent } from './admin/edit-anime/edit-anime.component';
   ],
   providers: [
     AnimeListService,
-    AnimeDetailService
+    AnimeDetailService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

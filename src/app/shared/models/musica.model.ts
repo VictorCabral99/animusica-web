@@ -5,4 +5,5 @@ export class Musica {
     tipoMusica: string
     urlMusica: string
     idAnime: string
+    nomeAnime: string
 }
