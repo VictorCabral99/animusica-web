@@ -72,4 +72,12 @@ export class UserComponent implements OnInit {
   pegarMusicasLocais(): Musica[]{
     return JSON.parse(localStorage.getItem("playlistData"));
   }
+
+  carregarMusicaPeloId(idMusica: string){
+    this.userService.getMusicById(idMusica).subscribe(res => this.salvarMusicaLocal(res));
+  }
+
+  salvarMusicaLocal(musica: Musica){
+    this.playlistArray.splice(0, 0, musica);
+  }
 }

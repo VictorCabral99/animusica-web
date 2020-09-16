@@ -16,4 +16,9 @@ import { Musica } from '../shared/models/musica.model';
         const headers = new HttpHeaders().set("Content-Type", "application/json");
         return this.http.get(this.globals.animeAPI+"/playlists/"+idPlaylist+"/musics", {headers}).pipe(map((response: Musica[])=> response));
     }
+
+    getMusicById(idMusica: string): Observable<Musica> {
+      const headers = new HttpHeaders().set("Content-Type", "application/json");
+      return this.http.get(this.globals.animeAPI + "/musics/" + idMusica, {headers}).pipe(map((response: Musica) => response));
+    }
   }
