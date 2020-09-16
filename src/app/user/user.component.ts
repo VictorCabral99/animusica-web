@@ -11,28 +11,26 @@ import { UserService } from './user.service';
 export class UserComponent implements OnInit {
   
   @ViewChild('player') player:ElementRef;
-  tocando: boolean;
+  tocando: boolean = false;
   playlistArray: Musica[] = [];
-  indicePlaylist: number;
+  indicePlaylist: number = 0;
 
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.tocando = false;
-    this.indicePlaylist = 0;
-    this.userService.getMusicsByPlaylist('1k0JrH1nKyVfzPw7E8hS').subscribe(res => {
-      this.playlistArray = res
-    });
+    this.playlistArray = this.pegarMusicasLocais();
+    
+    if(!this.playlistArray)
+      this.carregarPlaylistPeloId('1k0JrH1nKyVfzPw7E8hS');
   }
 
   playPause(){
-    if(this.tocando){
-      this.tocando = false;
-      this.pausarMusica();
-    } else {
-      this.tocando = true;
-      this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
-    }  
+    this.tocando = !this.tocando;
+    
+    this.tocando 
+      ? this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica) 
+      : this.pausarMusica();
+
   }
 
   iniciarMusica(url?){
@@ -47,18 +45,31 @@ export class UserComponent implements OnInit {
   }
 
   proximaMusica(){
-    this.indicePlaylist++;
-    if(this.indicePlaylist >= this.playlistArray.length){
-      this.indicePlaylist = 0;
-    }
+    this.indicePlaylist === this.playlistArray.length - 1
+      ? this.indicePlaylist = 0 
+      : this.indicePlaylist++;
+  
     this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
   }
 
   musicaAnterior(){
-    this.indicePlaylist--;
-    if(this.indicePlaylist < 0){
-      this.indicePlaylist = this.playlistArray.length - 1;
-    }
+    this.indicePlaylist === 0 
+      ? this.indicePlaylist = this.playlistArray.length - 1 
+      : this.indicePlaylist--;
+    
     this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
+  }
+
+  carregarPlaylistPeloId(id: string){
+    this.userService.getMusicsByPlaylist(id).subscribe(res => this.salvarMusicasLocais(res));
+  }
+  
+  salvarMusicasLocais(musicas: Musica[]){
+    this.playlistArray = musicas
+    localStorage.setItem("playlistData", JSON.stringify(musicas));
+  }
+
+  pegarMusicasLocais(): Musica[]{
+    return JSON.parse(localStorage.getItem("playlistData"));
   }
 }
