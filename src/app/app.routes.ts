@@ -22,6 +22,7 @@ export const ROUTES: Routes = [
     },
     { path: 'admin', component: AdminComponent,
         children: [
+            { path: '', redirectTo: 'anime/insert', pathMatch: 'full' },
             { path: 'anime', redirectTo: 'anime/insert', pathMatch: 'full' },
             { path: 'anime/insert', component: InsertAnimeComponent },
             { path: 'anime/edit', component: EditAnimeComponent },

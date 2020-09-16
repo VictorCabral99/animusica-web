@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Anime } from 'src/app/shared/models/anime.model';
 
 @Component({
   selector: 'app-insert-anime',
@@ -10,6 +11,7 @@ export class InsertAnimeComponent implements OnInit {
   caminhoImagem;
   imgURL: any;
   mensagem: string;
+  novoAnime: Anime;
   
   constructor() { }
 
@@ -35,4 +37,20 @@ export class InsertAnimeComponent implements OnInit {
     }
   }
 
+  salvarAnime(ev){
+    ev.preventDefault();
+    if(this.validarFormulario()){
+      this.persistirAnimeNoFirebase().then((idAnime) => {
+        console.log(idAnime);
+      })
+    }
+  }
+
+  validarFormulario(): boolean{
+    return true;
+  }
+
+  async persistirAnimeNoFirebase(): Promise<string>{
+    return "id"
+  }
 }

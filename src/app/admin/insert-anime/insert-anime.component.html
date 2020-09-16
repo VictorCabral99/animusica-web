@@ -15,5 +15,5 @@
     </div>
     <img class="img-temp" [src]="imgURL" *ngIf="imgURL">
     <span *ngIf="mensagem">{{ mensagem }}</span>
-    <button class="btn-salvar">Salvar</button>
+    <button class="btn-salvar" (click)="salvarAnime($event)">Salvar</button>
 </form>
