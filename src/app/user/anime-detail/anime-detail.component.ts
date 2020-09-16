@@ -16,42 +16,61 @@ export class AnimeDetailComponent implements OnInit{
 
   @ViewChild("title") titulo: ElementRef;
 
-  idAnime: string;
   anime: Anime;
   musicasPorTemporada$: Observable<Musica[]>[] = [];
+  tamanhoFonte: number = 36;
   
   ngOnInit() {
-    this.idAnime = this.route.snapshot.params['id'];
-    if(this.idAnime){
-      this.animeDetailService.getAnimeDetailsById(this.idAnime).subscribe(res => {
-        this.anime = res;
-        this.titulo.nativeElement.style.fontSize = this.reduzirTamanhoFonteTitulo(this.anime.nome) + "px";
-      });
-    } else {
-      this.router.navigate(['user']);
+    const idAnime = this.pegarParametroDaUrl("id")
+    
+    idAnime
+      ? this.carregarAnimePeloId(idAnime) 
+      : this.router.navigate(['user']);
+  }
+  
+  pegarParametroDaUrl(nomeParametro: string): string{
+    return this.route.snapshot.params[nomeParametro]
+  }
+
+  carregarAnimePeloId(idAnime: string): void{
+    this.animeDetailService.getAnimeDetailsById(idAnime).subscribe(res => {
+      this.salvarAnime(res)
+      this.reduzirTamanhoFonteTitulo(this.anime.nome)
+    });
+  }
+  
+  salvarAnime(dadosAnime: Anime){
+    this.anime = dadosAnime;
+  }
+
+  reduzirTamanhoFonteTitulo(nome: string): void{
+    let quantidadeDeLinhas = Math.floor(nome.length / 12);
+  
+    if(quantidadeDeLinhas > 1){
+      const porcentagemTamanhoIdeal = 100 - (10 * quantidadeDeLinhas);
+      this.tamanhoFonte  = this.tamanhoFonte * (porcentagemTamanhoIdeal / 100);
+      
+      this.definirTamanhoFonteTitulo(this.tamanhoFonte)
     }
   }
+
+  definirTamanhoFonteTitulo(tamanhoFonte: number){
+    this.titulo.nativeElement.style.fontSize = tamanhoFonte + "px";
+  }  
 
   mostrarMusicas(ev, temporada){
     let dropdownMenu = ev.target.nextElementSibling.querySelector('.music-list'); 
     if(dropdownMenu.children.length == 0){
       this.musicasPorTemporada$[temporada] = this.animeDetailService.getMusicsByAnimeSeason(this.anime.id, temporada);
     }
-    this.tratarListaMusica(dropdownMenu.classList);    
+    this.controleVisibilidadeListaMusica(dropdownMenu.classList);    
   }
 
-  reduzirTamanhoFonteTitulo(nome: string){
-    let tamanhoFontePadrao = 36;
-    let quantidadeDeLinhas = Math.floor(nome.length/12);
-    if(quantidadeDeLinhas > 1){
-      const porcentagemTamanhoIdeal = 100 - (10 * quantidadeDeLinhas);
-      let tamanhoFonte  = tamanhoFontePadrao * (porcentagemTamanhoIdeal / 100);
-      return tamanhoFonte;
-    }
-    return tamanhoFontePadrao;
-  }
-
-  tratarListaMusica(elemento: any) {
+  controleVisibilidadeListaMusica(elemento: any) {
     elemento.contains('close') ? elemento.remove('close') : elemento.add('close');
+  }
+
+  tocarMusica(idMusica: string){
+    console.log(idMusica);
   }
 }
