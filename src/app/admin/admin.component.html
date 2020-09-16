@@ -9,7 +9,7 @@
         <a (click)="toggleMenu()" [routerLink]='["music/insert"]'>Inserir Musica</a>
         <a (click)="toggleMenu()" [routerLink]='["music/edit"]'>Editar Musica</a>
     </nav>
-    <div class="bg-black" *ngIf="menuVisivel"></div>
+    <div class="bg-black" *ngIf="menuVisivel" (click)="toggleMenu()"></div>
     <div class="child">
         <router-outlet></router-outlet>
     </div>

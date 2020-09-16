@@ -11,6 +11,9 @@
     </div>
     <div class="form-group">
         <label>Capa do Anime:</label>
-        <input type="file">
+        <input #file type="file" accept='image/*' (change)="previsualizarImagem(file.files)">
     </div>
+    <img class="img-temp" [src]="imgURL" *ngIf="imgURL">
+    <span *ngIf="mensagem">{{ mensagem }}</span>
+    <button class="btn-salvar">Salvar</button>
 </form>
