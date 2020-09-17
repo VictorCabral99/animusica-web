@@ -22,9 +22,8 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.globals.visivelMiniPlayer.subscribe(data => this.miniPlayerVisivel = data);
-    
     this.playlistArray = this.pegarMusicasLocais();
-    if(!this.playlistArray)
+    if(this.playlistArray.length === 0)
       this.carregarPlaylistPeloId('1k0JrH1nKyVfzPw7E8hS');
   }
 
