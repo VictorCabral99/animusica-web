@@ -5,7 +5,7 @@
     <input id="searchInput" type="text" class="form-control text-center" #searchInput (focusout)="esconderCampo($event)" (keyup)="filtrarAnime($event)" style="display: none;"/>
 </div>
 <div>
-    <ul id="listaAnimes" #listAnimes >
+    <ul id="listaAnimes" #listAnimes [ngClass]="{ 'short': miniPlayerVisivel,'long' : !miniPlayerVisivel }" >
         <li *ngFor="let anime of animes" [ngClass]="{'hide': anime.visivel}">
             <a [routerLink]="['../detail/', anime.id]">
                 <div class="img"><img src="{{ anime.urlImagem }}"></div>

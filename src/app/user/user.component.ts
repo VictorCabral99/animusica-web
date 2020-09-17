@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, DebugEventListener } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Globals } from '../shared/globals';
 import { Musica } from '../shared/models/musica.model';
 import { UserService } from './user.service';
 
@@ -11,21 +12,24 @@ import { UserService } from './user.service';
 export class UserComponent implements OnInit {
   
   @ViewChild('player') player:ElementRef;
+  @ViewChild('miniPlayer') playerController: ElementRef;
   tocando: boolean = false;
   playlistArray: Musica[] = [];
   indicePlaylist: number = 0;
+  miniPlayerVisivel: Boolean;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private globals: Globals) { }
 
   ngOnInit(): void {
-    this.playlistArray = this.pegarMusicasLocais();
+    this.globals.visivelMiniPlayer.subscribe(data => this.miniPlayerVisivel = data);
     
+    this.playlistArray = this.pegarMusicasLocais();
     if(!this.playlistArray)
       this.carregarPlaylistPeloId('1k0JrH1nKyVfzPw7E8hS');
   }
 
-  playPause(){
-    this.tocando = !this.tocando;
+  playPause(tocar?:boolean){
+    this.tocando = tocar || !this.tocando;
     
     this.tocando 
       ? this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica) 
@@ -49,7 +53,7 @@ export class UserComponent implements OnInit {
       ? this.indicePlaylist = 0 
       : this.indicePlaylist++;
   
-    this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
+      this.playPause(this.tocando);
   }
 
   musicaAnterior(){
@@ -57,7 +61,7 @@ export class UserComponent implements OnInit {
       ? this.indicePlaylist = this.playlistArray.length - 1 
       : this.indicePlaylist--;
     
-    this.iniciarMusica(this.playlistArray[this.indicePlaylist].urlMusica);
+      this.playPause(this.tocando);
   }
 
   carregarPlaylistPeloId(id: string){
@@ -70,14 +74,23 @@ export class UserComponent implements OnInit {
   }
 
   pegarMusicasLocais(): Musica[]{
-    return JSON.parse(localStorage.getItem("playlistData"));
+    return JSON.parse(localStorage.getItem("playlistData")) || [];
   }
 
+  onActivate(componentReference){
+    componentReference.eventoPlayer?.subscribe((data) => this.carregarMusicaPeloId(data))
+  }
+  
   carregarMusicaPeloId(idMusica: string){
-    this.userService.getMusicById(idMusica).subscribe(res => this.salvarMusicaLocal(res));
+    this.userService.getMusicById(idMusica).subscribe(res =>{
+       this.salvarMusicaLocal(res);
+       this.indicePlaylist = 0;
+       this.playPause(this.tocando);
+    });
   }
 
   salvarMusicaLocal(musica: Musica){
     this.playlistArray.splice(0, 0, musica);
+    localStorage.setItem("playlistData", JSON.stringify(this.playlistArray));
   }
 }

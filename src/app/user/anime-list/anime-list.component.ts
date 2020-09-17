@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { AnimeListService } from './anime-list.service';
 import { Anime } from '../../shared/models/anime.model';
+import { Globals } from 'src/app/shared/globals';
 
 @Component({
   selector: 'app-anime-list',
@@ -11,19 +12,17 @@ export class AnimeListComponent implements OnInit {
 
   animes: Anime[] = [];
   erro: string = 'null';
+  miniPlayerVisivel: Boolean;
 
   @ViewChild('fakeInput') fakeInput: ElementRef;
   @ViewChild('searchInput') searchInput: ElementRef;
   @ViewChild('listAnimes') listAnimes: ElementRef;
 
-  constructor(private animeListService: AnimeListService) { }
+  constructor(private animeListService: AnimeListService, private globals: Globals) { }
 
   ngOnInit() {
-    this.animeListService.getAllAnimes().subscribe(res => {
-      this.animes = res;
-    }, (error) => {
-      this.erro = error;
-    });
+    this.globals.visivelMiniPlayer.subscribe(data => this.miniPlayerVisivel = data);
+    this.animeListService.getAllAnimes().subscribe(res => this.animes = res);
   }
 
   filtrarAnime(ev){

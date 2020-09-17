@@ -1,9 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { AnimeDetailService } from './anime-detail.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Anime } from 'src/app/shared/models/anime.model';
 import { Musica } from 'src/app/shared/models/musica.model';
 import { Observable } from 'rxjs';
+import { Globals } from 'src/app/shared/globals';
 
 @Component({
   selector: 'app-anime-detail',
@@ -12,7 +13,9 @@ import { Observable } from 'rxjs';
 })
 export class AnimeDetailComponent implements OnInit{
 
-  constructor(private animeDetailService: AnimeDetailService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private animeDetailService: AnimeDetailService, private router: Router, private route: ActivatedRoute, private globals: Globals) { }
+
+  @Output() eventoPlayer: EventEmitter<any> = new EventEmitter();
 
   @ViewChild("title") titulo: ElementRef;
 
@@ -70,7 +73,8 @@ export class AnimeDetailComponent implements OnInit{
     elemento.contains('close') ? elemento.remove('close') : elemento.add('close');
   }
 
-  tocarMusica(idMusica: string){
-    console.log(idMusica);
+  tocarMusica(idMusica: any){
+    this.globals.visivelMiniPlayer.next(true);
+    this.eventoPlayer.emit(idMusica)
   }
 }

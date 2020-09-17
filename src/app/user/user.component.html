@@ -1,7 +1,7 @@
-<router-outlet></router-outlet>
+<router-outlet (activate)="onActivate($event)"></router-outlet>
 <audio #player></audio>
 <div class="bottom-navigation-bar">
-    <div id="miniPlayer">
+    <div id="miniPlayer" *ngIf="miniPlayerVisivel">
         <div class="song-data">
             <div class="song-name">{{ playlistArray[indicePlaylist]?.nomeMusica }} </div>
             <div class="song-anime">{{ playlistArray[indicePlaylist]?.nomeAnime }}</div>

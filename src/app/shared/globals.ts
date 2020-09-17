@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
@@ -6,4 +7,5 @@ import { Injectable } from '@angular/core';
 })
 export class Globals {
     public animeAPI: string = ""
+    public visivelMiniPlayer: BehaviorSubject<Boolean> = new BehaviorSubject<Boolean>(false)
 }
