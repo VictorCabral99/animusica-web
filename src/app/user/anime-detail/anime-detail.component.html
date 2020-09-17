@@ -1,4 +1,4 @@
-<div class="conteudo">
+<div class="conteudo" [ngClass]="{ 'short-list': miniPlayerVisivel, 'long-list': !miniPlayerVisivel }">
     <div class="top-navigation-bar">
         <div>
             <a class="btn btn-voltar" [routerLink]="['../../list']"><i class="fas fa-chevron-left"></i></a>

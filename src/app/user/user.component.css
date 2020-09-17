@@ -23,12 +23,18 @@
 
 /* MINI PLAYER */
 #miniPlayer{
-    height: auto;
+    max-height: 1px;
+    overflow: hidden;
     width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: #585858;
+    transition: max-height 1s;
     box-shadow: 0px -10px 20px -1px rgba(0,0,0,0.4);
+}
+#miniPlayer.visivel {
+    height: auto;
+    max-height: 100px!important;
 }
 .song-data {
     color: white;

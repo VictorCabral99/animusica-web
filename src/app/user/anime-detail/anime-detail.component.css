@@ -1,5 +1,10 @@
-.conteudo {
-    height: calc(96vh - 85px);
+.conteudo.short-list {
+    height: calc(96vh - 75px);
+    overflow-y: scroll;
+}
+
+.conteudo.long-list {
+    height: calc(96vh - 21px);
     overflow-y: scroll;
 }
 /* BUTTONS */

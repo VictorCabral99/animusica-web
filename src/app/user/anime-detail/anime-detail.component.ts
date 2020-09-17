@@ -22,8 +22,10 @@ export class AnimeDetailComponent implements OnInit{
   anime: Anime;
   musicasPorTemporada$: Observable<Musica[]>[] = [];
   tamanhoFonte: number = 36;
+  miniPlayerVisivel: Boolean;
   
   ngOnInit() {
+    this.globals.visivelMiniPlayer.subscribe(data => this.miniPlayerVisivel = data);
     const idAnime = this.pegarParametroDaUrl("id")
     
     idAnime

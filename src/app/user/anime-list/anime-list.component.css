@@ -33,10 +33,16 @@
 }
 /* INPUT BUSCAR */
 /* LISTA ANIMES */
-#listaAnimes {
+#listaAnimes.short-list {
     list-style: none;
     padding: 0;
     height: 75vh;
+    overflow: auto;
+}
+#listaAnimes.long-list {
+    list-style: none;
+    padding: 0;
+    height: 80vh;
     overflow: auto;
 }
 #listaAnimes li {
