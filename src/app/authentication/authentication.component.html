@@ -2,7 +2,7 @@
     <div>
         <h1><img src="/assets/images/logo.png" class="logo"></h1>        
     </div>
-    <div>
+    <div *ngIf="false">
         <div>
             <button class="btn btn-google"><i class="fab fa-google-plus-g"></i> Entrar com o Google</button>
         </div>
@@ -10,7 +10,7 @@
             <button class="btn btn-facebook"><i class="fab fa-facebook-square"></i> Entrar com o Facebook</button>
         </div>
     </div>
-    <div class="spacer">
+    <div class="spacer" *ngIf="false">
         <hr/>OU<hr/>
     </div>
     <form>
@@ -32,7 +32,7 @@
             <button class="btn-entrar">Entrar</button>
         </div>
         <div class="cadastre-se text-center">
-           Não possui uma conta? <a href="#">Cadastre-se</a>
+           Não possui uma conta? <a [routerLink]="['../register']">Cadastre-se</a>
         </div>
     </form>
 </div>

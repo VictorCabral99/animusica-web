@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router'
 
 import { AuthenticationComponent } from './authentication/authentication.component';
+import { RegisterComponent } from './register/register.component';
+
 import { AdminComponent } from './admin/admin.component';
 import { InsertAnimeComponent } from './admin/insert-anime/insert-anime.component';
 import { EditAnimeComponent } from './admin/edit-anime/edit-anime.component';
@@ -32,5 +34,6 @@ export const ROUTES: Routes = [
         ]
     },
     { path: 'login', component: AuthenticationComponent },
+    { path: 'register', component: RegisterComponent },
     { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ]

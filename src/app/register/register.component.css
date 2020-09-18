@@ -1,0 +1,50 @@
+/*FORMULARIO*/
+.form-group {
+    margin: 8px;
+}
+.required {
+    color: red;
+}
+.form-control {
+    padding: 12px 6px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 5px;
+}
+.is-invalid {
+    border: 0.5px solid red;
+    box-shadow: inset 0px 0px 3px 1px lightcoral;
+}
+.is-valid {
+    border: 0.5px solid green;
+    box-shadow: inset 0px 0px 3px 1px lightgreen;
+}
+
+/*FORMULARIO*/
+/*BUTTONS*/
+.btn {
+    position: relative;
+    border: none;
+    margin: 5px 0px;
+}
+.btn-confirmar {
+    width: calc(100% - 16px);
+    background-color: green;
+    color: white;
+    padding: 12px 6px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 8px;
+}
+.btn-voltar {
+    width: calc(100% - 16px);
+    background-color: grey;
+    color: white;
+    padding: 12px 6px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 8px;
+}
+/*BUTTONS*/

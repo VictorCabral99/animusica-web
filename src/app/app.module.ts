@@ -1,5 +1,6 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ROUTES } from './app.routes';
@@ -14,10 +15,13 @@ import { AdminComponent } from './admin/admin.component';
 import { AnimeListService } from './user/anime-list/anime-list.service';
 import { AnimeDetailService } from './user/anime-detail/anime-detail.service';
 import { UserService } from './user/user.service'
+import { RegisterService } from './register/register.service';
+
 import { InsertAnimeComponent } from './admin/insert-anime/insert-anime.component';
 import { InsertMusicComponent } from './admin/insert-music/insert-music.component';
 import { EditMusicComponent } from './admin/edit-music/edit-music.component';
 import { EditAnimeComponent } from './admin/edit-anime/edit-anime.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -30,17 +34,21 @@ import { EditAnimeComponent } from './admin/edit-anime/edit-anime.component';
     InsertAnimeComponent,
     InsertMusicComponent,
     EditMusicComponent,
-    EditAnimeComponent
+    EditAnimeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
     HttpClientModule
   ],
   providers: [
     AnimeListService,
     AnimeDetailService,
-    UserService
+    UserService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })
